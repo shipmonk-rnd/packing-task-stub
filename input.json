@@ -1,0 +1,16 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "width": 3.4,
+            "height": 2.1,
+            "length": 3.0
+        },
+        {
+            "id": 2,
+            "width": 4.9,
+            "height": 1.0,
+            "length": 2.4
+        }
+    ]
+}
