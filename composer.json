@@ -1,5 +1,5 @@
 {
-    "name": "shipmonk/box",
+    "name": "shipmonk/packing",
     "description": "Testing day application stub",
     "require": {
         "ext-json": "*",
