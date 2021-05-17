@@ -32,11 +32,17 @@ class Packaging
      */
     private float $length;
 
-    public function __construct(float $width, float $height, float $length)
+    /**
+     * @ORM\Column(type="float")
+     */
+    private float $maxWeight;
+
+    public function __construct(float $width, float $height, float $length, float $maxWeight)
     {
         $this->width = $width;
         $this->height = $height;
         $this->length = $length;
+        $this->maxWeight = $maxWeight;
     }
 
 }

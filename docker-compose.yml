@@ -1,16 +1,16 @@
 version: "3.4"
 
 services:
-    shipmonk-packing-postgres:
-        image: postgres:13-alpine
+    shipmonk-packing-mysql:
+        image: mysql:8
         ports:
             -
-                target: 5432
-                published: 5432
+                target: 3306
+                published: 3306
         environment:
-            POSTGRES_USER: root
-            POSTGRES_PASSWORD: secret
-        hostname: postgres
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: packing
+        hostname: mysql
 
     shipmonk-packing-app:
         build: .
