@@ -10,6 +10,3 @@
 ### adminer
 - Open `http://localhost:8080/?server=mysql&username=root&db=packing`
 - Password: secret
-
-### check
-- `php vendor/bin/phpstan analyse src`
