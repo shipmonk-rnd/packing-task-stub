@@ -1,4 +1,5 @@
 ### init
+- `printf "UID=$(id -u)\nGID=$(id -g)" > .env`
 - `docker-compose up -d`
 - `docker-compose run shipmonk-packing-app bash`
 - `composer install`
