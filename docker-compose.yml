@@ -1,0 +1,26 @@
+version: "3.4"
+
+services:
+    shipmonk-packing-postgres:
+        image: postgres:13-alpine
+        ports:
+            -
+                target: 5432
+                published: 5432
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: secret
+        hostname: postgres
+
+    shipmonk-packing-app:
+        build: .
+        working_dir: /app
+        volumes:
+          - .:/app
+
+    shipmonk-packing-adminer:
+        image: adminer:latest
+        ports:
+            -
+                target: 8080
+                published: 8080

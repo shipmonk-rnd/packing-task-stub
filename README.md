@@ -1,8 +1,15 @@
-### install
-- `docker run --rm --interactive --tty --volume $PWD:/app composer install`
+### init
+- `docker-compose up -d`
+- `docker-compose run shipmonk-packing-app bash`
+- `composer install`
+- `vendor/bin/doctrine orm:schema-tool:create`
 
 ### run
-- `docker run --interactive --rm --name shipmonk-box --volume "$PWD":/usr/src/myapp -w /usr/src/myapp php:7.4-cli php run.php "$(cat input.json)"`
+- `php run.php "$(cat input.json)"`
+
+### adminer
+- Open `http://localhost:8080/?pgsql=postgres:5432&username=root&db=postgres`
+- Password: secret
 
 ### check
-- `docker run --interactive --rm --name shipmonk-box --volume "$PWD":/usr/src/myapp -w /usr/src/myapp php:7.4-cli php vendor/bin/phpstan analyse src`
+- `php vendor/bin/phpstan analyse src`
