@@ -1,7 +1,8 @@
-FROM php:7.4-cli-alpine
+FROM php:8.1-cli
 
 RUN set -ex \
-  && apk --no-cache add bash zip mysql-dev \
+  && apt update \
+  && apt install bash zip \
   && docker-php-ext-install pdo pdo_mysql
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
