@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
     shipmonk-packing-mysql:
-        image: mysql:8
+        image: mariadb:10.7
         ports:
             -
                 target: 3306
