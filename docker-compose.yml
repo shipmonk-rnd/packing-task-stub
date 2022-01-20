@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
     shipmonk-packing-mysql:
-        image: mysql:8
+        image: mariadb:10.7
         ports:
             -
                 target: 3306
@@ -13,6 +13,8 @@ services:
         hostname: mysql
 
     shipmonk-packing-app:
+        depends_on:
+            - shipmonk-packing-mysql
         build: .
         working_dir: /app
         user: ${UID:-1000}:${GID:-1000}
@@ -20,6 +22,8 @@ services:
           - .:/app
 
     shipmonk-packing-adminer:
+        depends_on:
+            - shipmonk-packing-mysql
         image: adminer:latest
         ports:
             -
