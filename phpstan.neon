@@ -1,0 +1,9 @@
+parameters:
+	parallel:
+		jobSize: 50
+		maximumNumberOfProcesses: 8
+		minimumNumberOfJobsPerProcess: 4
+	tmpDir: temp\phpstan
+	checkGenericClassInNonGenericObjectType: false
+includes:
+	- phpstan-baseline.neon

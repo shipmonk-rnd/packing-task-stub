@@ -2,20 +2,16 @@
 
 namespace App\Entity;
 
+use App\Helper\Traits\IdentifierTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  */
-class Packaging
+class Packaging extends BaseEntity
 {
 
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
-     */
-    private ?int $id = null;
+    use IdentifierTrait;
 
     /**
      * @ORM\Column(type="float")
@@ -45,4 +41,23 @@ class Packaging
         $this->maxWeight = $maxWeight;
     }
 
+    public function getWidth(): float
+    {
+        return $this->width;
+    }
+
+    public function getHeight(): float
+    {
+        return $this->height;
+    }
+
+    public function getLength(): float
+    {
+        return $this->length;
+    }
+
+    public function getMaxWeight(): float
+    {
+        return $this->maxWeight;
+    }
 }

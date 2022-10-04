@@ -2,25 +2,28 @@
 
 namespace App;
 
+use App\Facade\PackageFacade;
+use App\Response\PackageResponse;
 use Doctrine\ORM\EntityManager;
-use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class Application
 {
 
-    private EntityManager $entityManager;
+    private PackageFacade $packageFacade;
 
-    public function __construct(EntityManager $entityManager)
-    {
-        $this->entityManager = $entityManager;
+    public function __construct(
+        PackageFacade $packageFacade
+    ) {
+        $this->packageFacade = $packageFacade;
     }
 
-    public function run(RequestInterface $request): ResponseInterface
-    {
-        // your implementation entrypoint
-        return new Response();
+    public function run(
+        EntityManager $entityManager,
+        RequestInterface $request
+    ): ResponseInterface {
+        $package = $this->packageFacade->findBestPackaging($entityManager, $request);
+        return new PackageResponse($package);
     }
-
 }
