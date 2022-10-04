@@ -1,0 +1,29 @@
+parameters:
+  symfony:
+    containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
+  scanDirectories:
+    - var/cache/dev/Symfony/Config
+  kernel:
+    debug: false
+
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  # makes classes in src/ available to be used as services
+  # this creates a service per class whose id is the fully-qualified class name
+  App\:
+    resource: '../'
+    public: true
+    exclude:
+      - '../Entity/'
+      - '../bootstrap.php'
+      - '../Response/'
+
+  App\Model\BinPackaging\BinPackagingClient:
+    arguments:
+      $url: 'https://eu.api.3dbinpacking.com'
+      $username: 'lmaterna@pm.me'
+      $apiKey: '139d208e30529c91c19f962e3db3e869'
