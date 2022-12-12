@@ -2,11 +2,11 @@
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
-use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\ORMSetup;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$config = Setup::createAnnotationMetadataConfiguration([__DIR__], true, null, null, false);
+$config = ORMSetup::createAttributeMetadataConfiguration([__DIR__], true, __DIR__ . '/cache');
 $config->setNamingStrategy(new UnderscoreNamingStrategy());
 
 return EntityManager::create([

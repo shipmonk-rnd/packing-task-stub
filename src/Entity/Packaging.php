@@ -2,39 +2,28 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- */
+#[ORM\Entity]
 class Packaging
 {
 
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
-     */
+    #[ORM\Id]
+    #[ORM\Column(type: Types::INTEGER)]
+    #[ORM\GeneratedValue]
     private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="float")
-     */
+    #[ORM\Column(type: Types::FLOAT)]
     private float $width;
 
-    /**
-     * @ORM\Column(type="float")
-     */
+    #[ORM\Column(type: Types::FLOAT)]
     private float $height;
 
-    /**
-     * @ORM\Column(type="float")
-     */
+    #[ORM\Column(type: Types::FLOAT)]
     private float $length;
 
-    /**
-     * @ORM\Column(type="float")
-     */
+    #[ORM\Column(type: Types::FLOAT)]
     private float $maxWeight;
 
     public function __construct(float $width, float $height, float $length, float $maxWeight)
