@@ -6,7 +6,7 @@ use Doctrine\ORM\ORMSetup;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$config = ORMSetup::createAttributeMetadataConfiguration([__DIR__], true, __DIR__ . '/cache');
+$config = ORMSetup::createAttributeMetadataConfiguration([__DIR__], true);
 $config->setNamingStrategy(new UnderscoreNamingStrategy());
 
 return EntityManager::create([
