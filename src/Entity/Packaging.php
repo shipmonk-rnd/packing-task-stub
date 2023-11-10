@@ -6,7 +6,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Represents a boxes available in the warehouse.
+ * Represents a box available in the warehouse.
  *
  * Warehouse workers pack a set of products for a given order into one of these boxes.
  */
