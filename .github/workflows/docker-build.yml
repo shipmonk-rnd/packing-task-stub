@@ -17,6 +17,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Docker (macOS only)
+        if: runner.os == 'macOS'
+        run: |
+          brew install docker
+          brew install colima
+
       - name: Start Docker (macOS only)
         if: runner.os == 'macOS'
         run: colima start || true
