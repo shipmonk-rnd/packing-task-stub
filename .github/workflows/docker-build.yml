@@ -1,0 +1,24 @@
+name: Verify Dockerfile Build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Start Docker (macOS only)
+        if: runner.os == 'macOS'
+        run: colima start || true
+
+      - name: Build Docker image
+        run: docker build -t packing-task-stub .
