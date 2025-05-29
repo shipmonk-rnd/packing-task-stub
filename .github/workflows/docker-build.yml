@@ -23,9 +23,13 @@ jobs:
           brew install docker
           brew install colima
 
-      - name: Start Docker (macOS only)
+      - name: Start Colima (macOS only)
         if: runner.os == 'macOS'
-        run: colima start || true
+        run: colima start
+
+      - name: Set Docker context to Colima (macOS only)
+        if: runner.os == 'macOS'
+        run: docker context use colima
 
       - name: Install Docker Buildx (macOS only)
         if: runner.os == 'macOS'
@@ -44,3 +48,4 @@ jobs:
           else
             docker build -t packing-task-stub .
           fi
+
