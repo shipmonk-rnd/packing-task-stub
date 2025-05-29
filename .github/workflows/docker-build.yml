@@ -27,7 +27,20 @@ jobs:
         if: runner.os == 'macOS'
         run: colima start || true
 
+      - name: Install Docker Buildx (macOS only)
+        if: runner.os == 'macOS'
+        run: |
+          mkdir -p ~/.docker/cli-plugins
+          brew install docker-buildx
+          ln -sf /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
+
       - name: Enable BuildKit and build Docker image
         env:
           DOCKER_BUILDKIT: 1
-        run: docker build -t packing-task-stub .
+        run: |
+          if [ "$RUNNER_OS" = "macOS" ]; then
+            docker buildx create --use || true
+            docker buildx build --load -t packing-task-stub .
+          else
+            docker build -t packing-task-stub .
+          fi
